@@ -76,6 +76,9 @@ public class Network {
         if (getUser(name1) == null || getUser(name2) == null) {
             return false;
         }
+        if (name1.equals(name2)) {
+            return false;
+        }
         return getUser(name1).addFollowee(name2);
     }
 
@@ -147,7 +150,10 @@ public class Network {
     public String toString() {
         String ans = "Network:/n";
         for (int i = 0; i < userCount; i++) {
-            ans += users[i].toString() + "/n";
+            ans += users[i].toString();
+            if (i < userCount - 1) {
+                ans += "/n";
+            }
         }
         return ans;
     }
